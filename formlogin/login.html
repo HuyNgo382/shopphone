@@ -7,7 +7,10 @@
     <title>LOGIN</title>
     <link rel="stylesheet" href="../fontawesome-free-6.2.1-web/fontawesome-free-6.2.1-web/css/all.min.css">
     <link rel="stylesheet" href="login.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
+<script src="login.js"></script>
 <body>
     <div class="main">
             <!-- ============================form đăng nhập =========================================================-->
@@ -20,13 +23,13 @@
 
         <div class="form-group">
           <label for="email" class="form-label">Email</label>
-            <i class="fa-solid fa-envelope"></i> <input id="email" name="email" type="text" placeholder="VD: email@gmail.com" class="form-control"> 
+            <i class="fa-solid fa-envelope"></i> <input id="email1" name="email" type="text" placeholder="VD: email@gmail.com" class="form-control"> 
           <span class="form-message"></span>
         </div>
 
         <div class="form-group">
           <label for="password" class="form-label">Mật khẩu</label>
-            <i class="fa-solid fa-key"></i><input id="password" name="password" type="password" placeholder="********" class="form-control password">
+            <i class="fa-solid fa-key"></i><input id="password1" name="password" type="password" placeholder="********" class="form-control password">
           <div class="showhiden">
             <i class="fa-solid fa-eye icon-show hidden eye"></i>
             <i class="fa-solid fa-eye-slash icon-close eye"></i>
@@ -34,7 +37,7 @@
            <span class="form-message space-10px"></span>
         </div>
 
-        <button class="form-submit" type="submit">Đăng nhập</button>
+        <button class="form-submit" type="submit" onclick="doLogin()">Đăng nhập</button>
         
         <div class="form-back">
             <span>Bạn đã có tài khoản?</span> <a class="form-next-signup" href="#">Đăng Kí</a>
@@ -61,13 +64,13 @@
   
           <div class="form-group">
             <label for="email" class="form-label">Email</label>
-            <i class="fa-solid fa-envelope"></i><input id="email" name="email" type="text" placeholder="VD: email@gmail.com" class="form-control">
+            <i class="fa-solid fa-envelope"></i><input id="email2" name="email" type="text" placeholder="VD: email@gmail.com" class="form-control">
             <span class="form-message"></span>
           </div>
   
           <div class="form-group">
             <label for="password"class="form-label">Mật khẩu</label>
-            <i class="fa-solid fa-key"></i> <input id="password" name="password" type="password" placeholder= "********" class="form-control">
+            <i class="fa-solid fa-key"></i> <input id="password2" name="password" type="password" placeholder= "********" class="form-control">
             <span class="form-message"></span>
           </div>
   
@@ -109,11 +112,11 @@
           errorSelector: '.form-message',
           rules: [
             Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-            Validator.isEmail('#email'),
-            Validator.minLength('#password', 6),
+            Validator.isEmail('#email2'),
+            Validator.minLength('#password2', 6),
             Validator.isRequired('#password_confirmation'),
             Validator.isConfirmed('#password_confirmation', function () {
-              return document.querySelector('#form-1 #password').value;
+              return document.querySelector('#form-1 #password2').value;
             }, 'Mật khẩu nhập lại không chính xác')
           ],
           onSubmit: function (data) {
@@ -128,8 +131,8 @@
           formGroupSelector: '.form-group',
           errorSelector: '.form-message',
           rules: [
-            Validator.isEmail('#email'),
-            Validator.minLength('#password', 6),
+            Validator.isEmail('#email1'),
+            Validator.minLength('#password1', 6),
           ],
           onSubmit: function (data) {
             // Call API
